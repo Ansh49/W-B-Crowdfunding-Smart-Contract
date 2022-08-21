@@ -36,16 +36,17 @@ contract CrowdSource{
         require (TotalContribution < Target, "The Fundrasing has been completed");
         // Adding the contribution by the user to the total fund pool
         TotalContribution += msg.value;
-        msg.value[] ContributedFunds;
-        msg.sender[] Contributer;
+        uint contributions = msg.value;
+        address contributors = msg.sender;
+        uint contributions[] ContributedFunds;
+        address contributors[] Contributor;
 
          if (block.timestamp >= 2 days) {
              //return all money back
-            ContributedFunds[].transfer(Contributer[]);
+            ContributedFunds[].transfer(Contributor[]);
          }
       }
         
-    
         function FundsTransfer (address payable FundraiserAccount) public payable {
          // Transfer money to the admin specified address once fundrasing goal is met
         require (TotalContribution > Target, "The fundraising is still going on");
@@ -55,7 +56,6 @@ contract CrowdSource{
         function AdminBalance() public view returns (uint) {
             return manager.balance;
         }
-    
 }
 
 
